@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tPr-lG-CAp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Master-->
+        <scene sceneID="Qoa-Nh-es3">
+            <objects>
+                <navigationController title="Master" id="tPr-lG-CAp" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="u7d-yq-m2T">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ynk-dQ-XgX" kind="relationship" relationship="rootViewController" id="3QV-Z7-r4B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYP-Rw-VmQ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-38" y="-630"/>
+        </scene>
+        <!--Combinestagram-->
+        <scene sceneID="5Nl-1t-cqf">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="ynk-dQ-XgX" customClass="MainViewController" customModule="Combinestagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qOR-Me-mhh"/>
+                        <viewControllerLayoutGuide type="bottom" id="vQB-jj-K2t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a6F-6o-4IZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yN-DM-boI">
+                                <rect key="frame" x="54" y="460.5" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.67817674250000004" green="0.88699919869999999" blue="0.54654333939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Gg3-sH-Kfx"/>
+                                    <constraint firstAttribute="width" constant="80" id="gHc-EQ-gVK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Clear"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionClear" destination="ynk-dQ-XgX" eventType="touchUpInside" id="fQB-Fo-eNZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhV-4f-hod">
+                                <rect key="frame" x="241.5" y="460.5" width="80" height="80"/>
+                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="vSj-98-4wZ"/>
+                                    <constraint firstAttribute="height" constant="80" id="vmq-Ip-HW4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Save"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionSave" destination="ynk-dQ-XgX" eventType="touchUpInside" id="7Zm-w3-cK8"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2rT-Eh-NlM">
+                                <rect key="frame" x="16" y="145" width="343" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="iYM-WL-Bik"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2rT-Eh-NlM" firstAttribute="trailing" secondItem="a6F-6o-4IZ" secondAttribute="trailingMargin" id="EXH-ss-Uho"/>
+                            <constraint firstItem="2rT-Eh-NlM" firstAttribute="centerY" secondItem="a6F-6o-4IZ" secondAttribute="centerY" multiplier="0.75" id="PhF-g5-yJv"/>
+                            <constraint firstItem="2rT-Eh-NlM" firstAttribute="leading" secondItem="a6F-6o-4IZ" secondAttribute="leadingMargin" id="T4R-wf-tuF"/>
+                            <constraint firstItem="bhV-4f-hod" firstAttribute="centerY" secondItem="a6F-6o-4IZ" secondAttribute="centerY" multiplier="1.5" id="f0G-oG-x8F"/>
+                            <constraint firstItem="4yN-DM-boI" firstAttribute="centerX" secondItem="a6F-6o-4IZ" secondAttribute="centerX" multiplier="0.5" id="qw6-jz-A18"/>
+                            <constraint firstItem="bhV-4f-hod" firstAttribute="centerX" secondItem="a6F-6o-4IZ" secondAttribute="centerX" multiplier="1.5" id="rzS-to-vcf"/>
+                            <constraint firstItem="4yN-DM-boI" firstAttribute="centerY" secondItem="a6F-6o-4IZ" secondAttribute="centerY" multiplier="1.5" id="x2I-JE-8mc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FXg-lm-b73"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Combinestagram" id="yTJ-y8-zzb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wv7-sl-ZMO">
+                            <connections>
+                                <action selector="actionAdd" destination="ynk-dQ-XgX" id="Aya-1R-3yo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonClear" destination="4yN-DM-boI" id="jIW-dQ-Yls"/>
+                        <outlet property="buttonSave" destination="bhV-4f-hod" id="OTk-7r-uOu"/>
+                        <outlet property="imagePreview" destination="2rT-Eh-NlM" id="QCd-Xf-XRI"/>
+                        <outlet property="itemAdd" destination="wv7-sl-ZMO" id="BiT-4R-rAK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mes-ov-Ywf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="-631.69014084507046"/>
+        </scene>
+        <!--Add Photos-->
+        <scene sceneID="utB-2c-Ilc">
+            <objects>
+                <collectionViewController storyboardIdentifier="PhotosViewController" title="Add Photos" id="0wF-bx-cjH" customClass="PhotosViewController" customModule="Combinestagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" id="Qh6-kB-Tz8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ewG-ae-mio">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="16" maxX="8" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="1Kb-zL-GQv" customClass="PhotoCell" customModule="Combinestagram" customModuleProvider="target">
+                                <rect key="frame" x="8" y="16" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="syT-A0-VpI">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="syT-A0-VpI" secondAttribute="bottom" id="0hr-6n-FDZ"/>
+                                    <constraint firstItem="syT-A0-VpI" firstAttribute="top" secondItem="1Kb-zL-GQv" secondAttribute="top" id="NSn-CP-8bw"/>
+                                    <constraint firstAttribute="trailing" secondItem="syT-A0-VpI" secondAttribute="trailing" id="iEy-fN-WeN"/>
+                                    <constraint firstItem="syT-A0-VpI" firstAttribute="leading" secondItem="1Kb-zL-GQv" secondAttribute="leading" id="qYk-me-zzK"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="syT-A0-VpI" id="bRy-vo-nlZ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="0wF-bx-cjH" id="O0g-Yv-tHD"/>
+                            <outlet property="delegate" destination="0wF-bx-cjH" id="uGN-iI-74M"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aUJ-Qg-Tk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548.75" y="-632.74647887323943"/>
+        </scene>
+    </scenes>
+</document>
