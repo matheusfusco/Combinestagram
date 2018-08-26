@@ -4,11 +4,11 @@ import Photos
 import RxSwift
 
 class PhotoWriter {
-  
-  enum Errors: Error {
-    case couldNotSavePhoto
-  }
-
+    
+    enum Errors: Error {
+        case couldNotSavePhoto
+    }
+    
     static func save(_ image: UIImage) -> Single<String> {
         return Single.create(subscribe: { observer in
             var savedAssetID: String?
