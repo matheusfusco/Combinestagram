@@ -4,39 +4,52 @@ import RxSwift
 
 class PhotosViewController: UICollectionViewController {
     
-    private lazy var photos = PhotosViewController.loadPhotos()
-    private lazy var imageManager = PHCachingImageManager()
-    private let selectedPhotosSubject = PublishSubject<UIImage>()
+    // MARK: - Lets and Vars
+    // MARK: Public variables
     var selectedPhotos: Observable<UIImage> {
         return selectedPhotosSubject.asObservable()
     }
-    
+    // MARK: Private variables
+    private let disposeBag = DisposeBag()
+    private let selectedPhotosSubject = PublishSubject<UIImage>()
+    private lazy var photos = PhotosViewController.loadPhotos()
+    private lazy var imageManager = PHCachingImageManager()
     private lazy var thumbnailSize: CGSize = {
         let cellSize = (self.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
         return CGSize(width: cellSize.width * UIScreen.main.scale,
                       height: cellSize.height * UIScreen.main.scale)
     }()
     
+    // MARK: - Custom Methods
     static func loadPhotos() -> PHFetchResult<PHAsset> {
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         return PHAsset.fetchAssets(with: allPhotosOptions)
     }
     
-    // MARK: View Controller
+    func errorMessage() {
+        alert(title: "No access to Camera Roll",
+              text: "You can grant access to Combinestagram from the Settings app")
+            .asObservable()
+            .subscribe(onCompleted: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+                _ = self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         selectedPhotosSubject.onCompleted()
-        
     }
     
-    // MARK: UICollectionView
-    
+    // MARK: - UICollectionView Methods
+    // MARK: DataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -57,6 +70,7 @@ class PhotosViewController: UICollectionViewController {
         return cell
     }
     
+    // MARK: Delegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let asset = photos.object(at: indexPath.item)
         
@@ -70,7 +84,6 @@ class PhotosViewController: UICollectionViewController {
             if let isThumbnail = info[PHImageResultIsDegradedKey as NSString] as? Bool, !isThumbnail {
                 self?.selectedPhotosSubject.onNext(image)
             }
-            
         })
     }
 }
