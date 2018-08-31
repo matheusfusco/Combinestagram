@@ -17,7 +17,12 @@ class MainViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        images.asObservable()
+        let newImages = images.asObservable()
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .share(replay: 1)
+        
+        newImages
+            .debounce(0.5, scheduler: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] photos in
                     guard let preview = self?.imagePreview else {
@@ -29,7 +34,7 @@ class MainViewController: UIViewController {
             .disposed(by: bag)
         
         
-        images.asObservable()
+        newImages
             .subscribe(onNext: { [weak self] photos in
                 self?.updateUI(photos: photos)
             })
